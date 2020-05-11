@@ -3,7 +3,6 @@ type Author {
 	id: ID!
 	firstname: String
 	lastname: String
-	book: 
 }
 
 type Book {
@@ -83,7 +82,7 @@ input AuthorWhere {
 	id: IDFilter
 	firstname: StringFilter
 	lastname: StringFilter
-	book: Where
+	book: BookWhere
 	or: AuthorWhere
 	and: AuthorWhere
 }

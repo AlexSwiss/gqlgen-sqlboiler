@@ -22,6 +22,7 @@ require (
 	github.com/volatiletech/null v8.0.0+incompatible
 	github.com/volatiletech/sqlboiler v3.7.1+incompatible
 	github.com/web-ridge/sqlboiler-graphql-schema v1.0.3 // indirect
+	github.com/web-ridge/utils-go/boilergql v0.0.0-20200511175320-3ebf0e1563d4 // indirect
 	golang.org/x/sys v0.0.0-20200509044756-6aff5f38e54f // indirect
 	golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543 // indirect
 	gopkg.in/ini.v1 v1.56.0 // indirect

@@ -2,19 +2,165 @@
 
 package model
 
-type NewTodo struct {
-	Text   string `json:"text"`
-	UserID string `json:"userId"`
+type Author struct {
+	ID        string  `json:"id"`
+	Firstname *string `json:"firstname"`
+	Lastname  *string `json:"lastname"`
 }
 
-type Todo struct {
-	ID   string `json:"id"`
-	Text string `json:"text"`
-	Done bool   `json:"done"`
-	User *User  `json:"user"`
+type AuthorCreateInput struct {
+	Firstname *string `json:"firstname"`
+	Lastname  *string `json:"lastname"`
+	BookID    *string `json:"bookId"`
 }
 
-type User struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
+type AuthorDeletePayload struct {
+	ID string `json:"id"`
+}
+
+type AuthorFilter struct {
+	Search *string      `json:"search"`
+	Where  *AuthorWhere `json:"where"`
+}
+
+type AuthorPayload struct {
+	Author *Author `json:"author"`
+}
+
+type AuthorUpdateInput struct {
+	Firstname *string `json:"firstname"`
+	Lastname  *string `json:"lastname"`
+	BookID    *string `json:"bookId"`
+}
+
+type AuthorWhere struct {
+	ID        *IDFilter     `json:"id"`
+	Firstname *StringFilter `json:"firstname"`
+	Lastname  *StringFilter `json:"lastname"`
+	Book      *BookWhere    `json:"book"`
+	Or        *AuthorWhere  `json:"or"`
+	And       *AuthorWhere  `json:"and"`
+}
+
+type AuthorsCreateInput struct {
+	Authors []*AuthorCreateInput `json:"authors"`
+}
+
+type AuthorsDeletePayload struct {
+	Ids []string `json:"ids"`
+}
+
+type AuthorsPayload struct {
+	Authors []*Author `json:"authors"`
+}
+
+type AuthorsUpdatePayload struct {
+	Ok bool `json:"ok"`
+}
+
+type Book struct {
+	ID       string  `json:"id"`
+	Name     *string `json:"name"`
+	Category *string `json:"category"`
+}
+
+type BookCreateInput struct {
+	Name     *string `json:"name"`
+	Category *string `json:"category"`
+}
+
+type BookDeletePayload struct {
+	ID string `json:"id"`
+}
+
+type BookFilter struct {
+	Search *string    `json:"search"`
+	Where  *BookWhere `json:"where"`
+}
+
+type BookPayload struct {
+	Book *Book `json:"book"`
+}
+
+type BookUpdateInput struct {
+	Name     *string `json:"name"`
+	Category *string `json:"category"`
+}
+
+type BookWhere struct {
+	ID       *IDFilter     `json:"id"`
+	Name     *StringFilter `json:"name"`
+	Category *StringFilter `json:"category"`
+	Or       *BookWhere    `json:"or"`
+	And      *BookWhere    `json:"and"`
+}
+
+type BooksCreateInput struct {
+	Books []*BookCreateInput `json:"books"`
+}
+
+type BooksDeletePayload struct {
+	Ids []string `json:"ids"`
+}
+
+type BooksPayload struct {
+	Books []*Book `json:"books"`
+}
+
+type BooksUpdatePayload struct {
+	Ok bool `json:"ok"`
+}
+
+type BooleanFilter struct {
+	IsTrue  *bool `json:"isTrue"`
+	IsFalse *bool `json:"isFalse"`
+	IsNull  *bool `json:"isNull"`
+}
+
+type FloatFilter struct {
+	EqualTo           *float64  `json:"equalTo"`
+	NotEqualTo        *float64  `json:"notEqualTo"`
+	LessThan          *float64  `json:"lessThan"`
+	LessThanOrEqualTo *float64  `json:"lessThanOrEqualTo"`
+	MoreThan          *float64  `json:"moreThan"`
+	MoreThanOrEqualTo *float64  `json:"moreThanOrEqualTo"`
+	In                []float64 `json:"in"`
+	NotIn             []float64 `json:"notIn"`
+}
+
+type IDFilter struct {
+	EqualTo    *string  `json:"equalTo"`
+	NotEqualTo *string  `json:"notEqualTo"`
+	In         []string `json:"in"`
+	NotIn      []string `json:"notIn"`
+}
+
+type IntFilter struct {
+	EqualTo           *int  `json:"equalTo"`
+	NotEqualTo        *int  `json:"notEqualTo"`
+	LessThan          *int  `json:"lessThan"`
+	LessThanOrEqualTo *int  `json:"lessThanOrEqualTo"`
+	MoreThan          *int  `json:"moreThan"`
+	MoreThanOrEqualTo *int  `json:"moreThanOrEqualTo"`
+	In                []int `json:"in"`
+	NotIn             []int `json:"notIn"`
+}
+
+type StringFilter struct {
+	EqualTo            *string  `json:"equalTo"`
+	NotEqualTo         *string  `json:"notEqualTo"`
+	In                 []string `json:"in"`
+	NotIn              []string `json:"notIn"`
+	StartWith          *string  `json:"startWith"`
+	NotStartWith       *string  `json:"notStartWith"`
+	EndWith            *string  `json:"endWith"`
+	NotEndWith         *string  `json:"notEndWith"`
+	Contain            *string  `json:"contain"`
+	NotContain         *string  `json:"notContain"`
+	StartWithStrict    *string  `json:"startWithStrict"`
+	NotStartWithStrict *string  `json:"notStartWithStrict"`
+	EndWithStrict      *string  `json:"endWithStrict"`
+	NotEndWithStrict   *string  `json:"notEndWithStrict"`
+	ContainStrict      *string  `json:"containStrict"`
+	NotContainStrict   *string  `json:"notContainStrict"`
 }
